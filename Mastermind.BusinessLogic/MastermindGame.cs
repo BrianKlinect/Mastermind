@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Mastermind.BusinessLogic
 {
@@ -28,14 +29,7 @@ namespace Mastermind.BusinessLogic
             }
 
             // now count how many digits are in the wrong position
-            var digitsInWrongPosition = 0;
-            foreach (var g in guess)
-            {
-                if (Secret.Contains(g))
-                {
-                    ++digitsInWrongPosition;
-                }
-            }
+            var digitsInWrongPosition = Secret.Intersect(guess).Count();
 
             // subtract the number of correct positions off of the number of wrong positions (we double counted them)
             digitsInWrongPosition -= digitsInCorrectPosition;
