@@ -27,8 +27,10 @@ namespace Mastermind.App
             Console.WriteLine($"Enter a guess that contains {MastermindGame.SECRET_SIZE} digits between {MastermindGame.MIN_DIGIT} and {MastermindGame.MAX_DIGIT}");
             for (var i = 0; i < MastermindGame.NUMBER_OF_TURNS; ++i)
             {
+                Console.WriteLine($"Guess #{i + 1}");
+
                 // validate the guess against the secret
-                var guessList = GetPlayerGuess(i + 1);
+                var guessList = GetPlayerGuess();
                 var validation = game.ValidateGuess(guessList);
                 var validationString = string.Join("", validation);
 
@@ -48,6 +50,9 @@ namespace Mastermind.App
             Console.ReadLine();
         }
 
+        /// <summary>
+        ///  helper method to generate a ++++ string so that we can tell the user they won
+        /// </summary>
         private static string GetWinningResponse()
         {
             var winningResponse = new List<char>();
@@ -58,10 +63,14 @@ namespace Mastermind.App
             return string.Join("", winningResponse);
         }
 
-        private static IList<int> GetPlayerGuess(int guessNumber)
+        /// <summary>
+        /// Prompts the player
+        /// Handle console input from the player
+        /// Validates the input is in the correct format
+        /// </summary>
+        /// <returns>A list of the digits the player entered</returns>
+        private static IList<int> GetPlayerGuess()
         {
-
-            Console.WriteLine($"Guess #{guessNumber}");
             // keep trying player input until we get something valid
             while (true)
             {
