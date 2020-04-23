@@ -6,7 +6,10 @@ namespace Mastermind.App
 {
     public class Mastermind
     {
-
+        /// <summary>
+        /// Plays a game of mastermind
+        /// Uses the console to ask for guesses and gives the responses
+        /// </summary>
         public static void Main()
         {
             var winningResponse = GetWinningResponse();
@@ -40,6 +43,7 @@ namespace Mastermind.App
             }
 
             Console.WriteLine("You lose");
+            Console.WriteLine($"The secret was {string.Join("", secret)}");
             Console.WriteLine("Press any key to quit");
             Console.ReadLine();
         }
