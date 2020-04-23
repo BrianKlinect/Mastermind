@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mastermind.App", "Mastermind.App\Mastermind.App.csproj", "{7963FFC0-17DC-4D66-A8F4-CB59DEA17D1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mastermind.Tests", "Mastermind.Tests\Mastermind.Tests.csproj", "{10202CE2-F2F7-4DCF-9B3F-A6A068D89EAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mastermind.BusinessLogic", "Mastermind.BusinessLogic\Mastermind.BusinessLogic.csproj", "{B2053D27-A65A-435F-A379-CE46856E36D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{7963FFC0-17DC-4D66-A8F4-CB59DEA17D1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7963FFC0-17DC-4D66-A8F4-CB59DEA17D1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7963FFC0-17DC-4D66-A8F4-CB59DEA17D1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10202CE2-F2F7-4DCF-9B3F-A6A068D89EAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10202CE2-F2F7-4DCF-9B3F-A6A068D89EAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10202CE2-F2F7-4DCF-9B3F-A6A068D89EAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10202CE2-F2F7-4DCF-9B3F-A6A068D89EAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2053D27-A65A-435F-A379-CE46856E36D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2053D27-A65A-435F-A379-CE46856E36D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2053D27-A65A-435F-A379-CE46856E36D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2053D27-A65A-435F-A379-CE46856E36D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

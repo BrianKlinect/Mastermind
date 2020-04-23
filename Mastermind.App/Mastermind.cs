@@ -2,9 +2,9 @@
 
 namespace Mastermind.App
 {
-    class Program
+    public class Mastermind
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             Console.WriteLine("Hello World!");
         }
