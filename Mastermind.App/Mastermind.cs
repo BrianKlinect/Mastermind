@@ -25,17 +25,11 @@ namespace Mastermind.App
 
             var game = new MastermindGame(secret);
 
+            Console.WriteLine($"Enter a guess that contains {SECRET_SIZE} digits between {MIN_DIGIT} and {MAX_DIGIT}");
             for (var i = 0; i < NUMBER_OF_TURNS; ++i)
             {
-                // todo: get the player input
-                var playerInput = "1111";
-
                 // validate the guess against the secret
-                var guessList = new List<int>();
-                foreach (var c in playerInput)
-                {
-                    guessList.Add((int)char.GetNumericValue(c));
-                }
+                var guessList = GetPlayerGuess(i + 1);
                 var validation = game.ValidateGuess(guessList);
                 var validationString = string.Join("", validation);
 
@@ -62,6 +56,45 @@ namespace Mastermind.App
                 winningResponse.Add(MastermindGame.CORRECT_DIGIT_AND_CORRECT_POSITION);
             }
             return string.Join("", winningResponse);
+        }
+
+        private static IList<int> GetPlayerGuess(int guessNumber)
+        {
+
+            Console.WriteLine($"Guess #{guessNumber}");
+            // keep trying player input until we get something valid
+            while (true)
+            {
+                var input = Console.ReadLine();
+
+                if (input.Length != SECRET_SIZE)
+                {
+                    Console.WriteLine($"Guess must be {SECRET_SIZE} digits in length");
+                    continue;
+                }
+
+                var guessList = new List<int>();
+                foreach (var c in input)
+                {
+                    if (!char.IsNumber(c))
+                    {
+                        Console.WriteLine($"Guess must be only numbers");
+                        break;
+                    }
+                    var number = (int)char.GetNumericValue(c);
+                    if (number > MAX_DIGIT || number < MIN_DIGIT)
+                    {
+                        Console.WriteLine($"Guess must be between {MIN_DIGIT} and {MAX_DIGIT}");
+                        break;
+                    }
+                    guessList.Add(number);
+                }
+
+                if (guessList.Count == SECRET_SIZE)
+                {
+                    return guessList;
+                }
+            }
         }
     }
 }
