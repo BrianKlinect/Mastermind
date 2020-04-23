@@ -10,7 +10,10 @@ namespace Mastermind.Tests
     {
         [DataTestMethod]
         [DataRow("1234", "1234", "++++")]
-        public void ValidateSuccessfulGuessesGiveCorrectDigitSign(string secret, string guess, string expectedValidation)
+        [DataRow("1234", "6666", "")]
+        [DataRow("1234", "2356", "--")]
+        [DataRow("1234", "1355", "+-")]
+        public void ValidateSuccessfulGuessesGiveCorrectSigns(string secret, string guess, string expectedValidation)
         {
             // Arrange
 

@@ -17,7 +17,43 @@ namespace Mastermind.BusinessLogic
 
         public IList<char> ValidateGuess(IList<int> guess)
         {
-            return new List<char>() { CORRECT_DIGIT_AND_CORRECT_POSITION };
+            // check first for the number of digits in the correct position
+            var digitsInCorrectPosition = 0;
+            for (var i = 0; i < Secret.Count; ++i)
+            {
+                if (Secret[i] == guess[i])
+                {
+                    ++digitsInCorrectPosition;
+                }
+            }
+
+            // now count how many digits are in the wrong position
+            var digitsInWrongPosition = 0;
+            foreach (var g in guess)
+            {
+                if (Secret.Contains(g))
+                {
+                    ++digitsInWrongPosition;
+                }
+            }
+
+            // subtract the number of correct positions off of the number of wrong positions (we double counted them)
+            digitsInWrongPosition -= digitsInCorrectPosition;
+
+            // build the response list
+            // put the correct position characters first
+            // then put the incorrect position characters
+            var responseList = new List<char>();
+            for (var i = 0; i < digitsInCorrectPosition; ++i)
+            {
+                responseList.Add(CORRECT_DIGIT_AND_CORRECT_POSITION);
+            }
+            for (var i = 0; i < digitsInWrongPosition; ++i)
+            {
+                responseList.Add(CORRECT_DIGIT_AND_WRONG_POSITION);
+            }
+
+            return responseList;
         }
     }
 }
