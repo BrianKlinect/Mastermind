@@ -6,10 +6,6 @@ namespace Mastermind.App
 {
     public class Mastermind
     {
-        private const int SECRET_SIZE = 4;
-        private const int MIN_DIGIT = 1;
-        private const int MAX_DIGIT = 6;
-        private const int NUMBER_OF_TURNS = 10;
 
         public static void Main()
         {
@@ -18,15 +14,15 @@ namespace Mastermind.App
             // build the secret
             var random = new Random();
             var secret = new List<int>();
-            for (var i = 0; i < SECRET_SIZE; ++i)
+            for (var i = 0; i < MastermindGame.SECRET_SIZE; ++i)
             {
-                secret.Add(random.Next(MIN_DIGIT, MAX_DIGIT + 1)); // random is an exclusive upper bound
+                secret.Add(random.Next(MastermindGame.MIN_DIGIT, MastermindGame.MAX_DIGIT + 1)); // random is an exclusive upper bound
             }
 
             var game = new MastermindGame(secret);
 
-            Console.WriteLine($"Enter a guess that contains {SECRET_SIZE} digits between {MIN_DIGIT} and {MAX_DIGIT}");
-            for (var i = 0; i < NUMBER_OF_TURNS; ++i)
+            Console.WriteLine($"Enter a guess that contains {MastermindGame.SECRET_SIZE} digits between {MastermindGame.MIN_DIGIT} and {MastermindGame.MAX_DIGIT}");
+            for (var i = 0; i < MastermindGame.NUMBER_OF_TURNS; ++i)
             {
                 // validate the guess against the secret
                 var guessList = GetPlayerGuess(i + 1);
@@ -51,7 +47,7 @@ namespace Mastermind.App
         private static string GetWinningResponse()
         {
             var winningResponse = new List<char>();
-            for (var i = 0; i < SECRET_SIZE; ++i)
+            for (var i = 0; i < MastermindGame.SECRET_SIZE; ++i)
             {
                 winningResponse.Add(MastermindGame.CORRECT_DIGIT_AND_CORRECT_POSITION);
             }
@@ -67,9 +63,9 @@ namespace Mastermind.App
             {
                 var input = Console.ReadLine();
 
-                if (input.Length != SECRET_SIZE)
+                if (input.Length != MastermindGame.SECRET_SIZE)
                 {
-                    Console.WriteLine($"Guess must be {SECRET_SIZE} digits in length");
+                    Console.WriteLine($"Guess must be {MastermindGame.SECRET_SIZE} digits in length");
                     continue;
                 }
 
@@ -82,15 +78,15 @@ namespace Mastermind.App
                         break;
                     }
                     var number = (int)char.GetNumericValue(c);
-                    if (number > MAX_DIGIT || number < MIN_DIGIT)
+                    if (number > MastermindGame.MAX_DIGIT || number < MastermindGame.MIN_DIGIT)
                     {
-                        Console.WriteLine($"Guess must be between {MIN_DIGIT} and {MAX_DIGIT}");
+                        Console.WriteLine($"Guess must be between {MastermindGame.MIN_DIGIT} and {MastermindGame.MAX_DIGIT}");
                         break;
                     }
                     guessList.Add(number);
                 }
 
-                if (guessList.Count == SECRET_SIZE)
+                if (guessList.Count == MastermindGame.SECRET_SIZE)
                 {
                     return guessList;
                 }
