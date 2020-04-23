@@ -15,6 +15,11 @@ namespace Mastermind.Tests
         [DataRow("1234", "1355", "+-")]
         [DataRow("1234", "1111", "+")]
         [DataRow("1234", "6111", "-")]
+        [DataRow("5656", "5656", "++++")]
+        [DataRow("5656", "5555", "++")]
+        [DataRow("5656", "6666", "++")]
+        [DataRow("5656", "6666", "++")]
+        [DataRow("5656", "5566", "++--")]
         public void ValidateSuccessfulGuessesGiveCorrectSigns(string secret, string guess, string expectedValidation)
         {
             // Arrange
